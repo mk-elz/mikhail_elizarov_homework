@@ -84,7 +84,7 @@ createtemplate() {
 TEMPL_ID=`echo $(createtemplate)|jq -r result[0].templateids`
 
 createhost() {
-    JsData=`jo jsonrpc=2.0 method=host.create params=$(jo host=$HOSTNAME_ag interfaces=$(jo type=1 main=1 useip=1 ip=$ZbAgentIp dns="" port=$ZbPort) groups=$(jo groupid=$ZbGroup)) templates=$(jo templateid=1001 templateid=$TEMPL_ID) auth=$AUTH_TOKEN id=0`
+    JsData=`jo jsonrpc=2.0 method=host.create params=$(jo host=$HOSTNAME_ag interfaces=$(jo type=1 main=1 useip=1 ip=$ZbAgentIp dns="" port=$ZbPort) groups=$(jo groupid=$GROUP_ID)) templates=$(jo templateid=1001 templateid=$TEMPL_ID) auth=$AUTH_TOKEN id=0`
     
     echo `curl -s -H 'Content-Type: application/json-rpc' -d "$JsData" $ZbApi`
 }
